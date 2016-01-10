@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="PreCompile">
+      <UniqueIdentifier>{ae98fd3d-0a0c-4a17-8029-2a4db3b06af2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Datas">
+      <UniqueIdentifier>{0fdb24a2-4df9-42ac-83fc-d860b183e4ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window">
+      <UniqueIdentifier>{18fbfd75-1b3a-41b2-97e2-0382316564f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Window">
+      <UniqueIdentifier>{8d71f045-ad43-4172-971c-bd6f8ee5c9b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Datas">
+      <UniqueIdentifier>{4a524502-348a-4414-ba15-cf5a69976067}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Datas\ManData.h">
+      <Filter>Header Files\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Window\EditorWindow.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Window\Fq4EditorWindow.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Pch.h">
+      <Filter>PreCompile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\targetver.h">
+      <Filter>PreCompile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Datas\Job.h">
+      <Filter>Header Files\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Window\Fq4EditorWindow.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window\EditorWindow.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Datas\ManData.cpp">
+      <Filter>Source Files\Datas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PchCreator.cpp">
+      <Filter>PreCompile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fq4Editor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Fq4Editor.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="large.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FQ4GD.X">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="FQ4GD.N">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
