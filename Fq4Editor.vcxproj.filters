@@ -89,5 +89,6 @@
     <None Include="FQ4GD.N">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include=".editorconfig" />
   </ItemGroup>
 </Project>
