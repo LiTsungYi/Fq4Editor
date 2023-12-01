@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <vector>
 #include <set>
@@ -36,7 +36,7 @@ private:
     void ReleaseFatigue();
 
     bool CanGiveThisMember( Uint16 roleId );
-    std::wstring Fq4EditorWindow::LogTeamResult( int count, int total ) const;
+    std::wstring LogTeamResult( int count, int total ) const;
     void Log( std::wstringstream& stringStream, const ManData& data ) const;
 
 private:

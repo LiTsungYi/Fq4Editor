@@ -1,4 +1,4 @@
-#include "Pch.h"
+ï»¿#include "Pch.h"
 
 #include <sstream>
 #include <WinBase.h>
@@ -23,8 +23,8 @@ Fq4EditorWindow::~Fq4EditorWindow()
 
 void Fq4EditorWindow::Init()
 {
-    std::shared_ptr<Kafka::InputFileStream> fileStream;
-    fileStream.reset( new Kafka::InputFileStream() );
+    std::shared_ptr<Kafka::Stream::InputFileStream> fileStream;
+    fileStream.reset( new Kafka::Stream::InputFileStream() );
     fileStream->OpenFile( "FQ4GD.X", true );
 
     if ( fileStream == nullptr || !fileStream->IsOpened() )
@@ -45,72 +45,72 @@ void Fq4EditorWindow::Init()
 
         switch ( data.job )
         {
-        case 0x3F: // °ê¤ı (´ËªL°ê ¹p´µ¹F)
-        case 0x6C: // ºëÆF¤ı (ºëÆF°ê ÂÄ¤º¦h)
-        case 0x4D: // °ê¤ı (Äq¤s°ê ®æªL´µ)
-        case 0x74: // °ê¤ı (®üµs°ê ¼}¥§¹y)
+        case 0x3F: // åœ‹ç‹ (æ£®æ—åœ‹ é›·æ–¯é”)
+        case 0x6C: // ç²¾éˆç‹ (ç²¾éˆåœ‹ è–©å…§å¤š)
+        case 0x4D: // åœ‹ç‹ (ç¤¦å±±åœ‹ æ ¼æ—æ–¯)
+        case 0x74: // åœ‹ç‹ (æµ·ç›œåœ‹ æ…•å°¼é “)
             m_kingDatas.push_back( data );
             break;
 
-        case 0x37: // ¬õ¾Ô¤h
-        case 0x40: // ¾ÇªÌ
-        case 0x41: // »s¹Ï®a
-        case 0x42: // «i¤h
-        case 0x43: // ¬õÃM¤h
-        case 0x44: // ¢à¤h§L
-        case 0x45: // ¢à¤}§L
+        case 0x37: // ç´…æˆ°å£«
+        case 0x40: // å­¸è€…
+        case 0x41: // è£½åœ–å®¶
+        case 0x42: // å‹‡å£«
+        case 0x43: // ç´…é¨å£«
+        case 0x44: // ï¼²å£«å…µ
+        case 0x45: // ï¼²å¼“å…µ
             m_forestDatas.push_back( data );
             break;
 
-        case 0x6D: // ºëÆF
-        case 0x6E: // ºëÆF
-        case 0x6F: // ¤jºëÆF
-        case 0x70: // ÆFÅ]¤k
+        case 0x6D: // ç²¾éˆ
+        case 0x6E: // ç²¾éˆ
+        case 0x6F: // å¤§ç²¾éˆ
+        case 0x70: // éˆé­”å¥³
             m_elfDatas.push_back( data );
             break;
 
-        case 0x11: // ¾ÇªÌ
-        case 0x14: // ¥§¹¬
-        case 0x36: // ¶¤­û
-        case 0x4F: // ¾ÇªÌ
-        case 0x51: // ºñÃM¤h
-        case 0x52: // ¢Õ¤h§L
-        case 0x53: // ¢Õ¾Ô¤h
+        case 0x11: // å­¸è€…
+        case 0x14: // å°¼åƒ§
+        case 0x36: // éšŠå“¡
+        case 0x4F: // å­¸è€…
+        case 0x51: // ç¶ é¨å£«
+        case 0x52: // ï¼§å£«å…µ
+        case 0x53: // ï¼§æˆ°å£«
             m_mineDatas.push_back( data );
             break;
 
-        case 0x4E: // ¬Ó¦Z (¥±¨½´Ë 2A 02, ³·º¸ºû¨È 19 02)
+        case 0x4E: // çš‡å (å¼—é‡Œæ£® 2A 02, é›ªçˆ¾ç¶­äº 19 02)
             if ( data.name == 0x22A || data.name == 0x219 )
             {
                 m_mineDatas.push_back( data );
             }
             break;
 
-        case 0x75: // ®üµs
-        case 0x76: // ¤j®üµs
-        case 0x77: // ¤½Àï
-        case 0x78: // §J¾Ç¤h
-        case 0x79: // ºj¾Ç¤h
-        case 0x7A: // ¦u½Ã
+        case 0x75: // æµ·ç›œ
+        case 0x76: // å¤§æµ·ç›œ
+        case 0x77: // å…¬çˆµ
+        case 0x78: // å…‹å­¸å£«
+        case 0x79: // æ§å­¸å£«
+        case 0x7A: // å®ˆè¡›
             m_seaDatas.push_back( data );
             break;
 
-        case 0x7F: // ¤gºëÆF (¦Ì¨½©Ô¤ì 64 02)
+        case 0x7F: // åœŸç²¾éˆ (ç±³é‡Œæ‹‰æœ¨ 64 02)
             if ( data.name == 0x264 )
             {
                 m_seaDatas.push_back( data );
             }
             break;
 
-        case 0x46: // ¤ı¤l (¹p§J´µ)
-        case 0x49: // ¥Õ¾Ô¤h
-        case 0x4B: // ºj§L
+        case 0x46: // ç‹å­ (é›·å…‹æ–¯)
+        case 0x49: // ç™½æˆ°å£«
+        case 0x4B: // æ§å…µ
             m_plainMagicianDatas.push_back( data );
             break;
 
-        case 0x47: // ¤ı¤l (³ÇÄõ)
-        case 0x4C: // »¤¾Éºj
-        case 0xC2: // ÃM¤h (¥­­ì°ê)
+        case 0x47: // ç‹å­ (å‚‘è˜­)
+        case 0x4C: // èª˜å°æ§
+        case 0xC2: // é¨å£« (å¹³åŸåœ‹)
             m_plainKnightDatas.push_back( data );
             break;
         }
@@ -127,7 +127,7 @@ LRESULT CALLBACK Fq4EditorWindow::OnCommand( HWND hWnd, UINT message, WPARAM wPa
         {
             int count = GiveTeam( m_kingDatas );
             std::wstring&& message = LogTeamResult( count, m_kingDatas.size() );
-            MessageBox( hWnd, message.c_str(), L"°ê¤ı­Ì", MB_OK );
+            MessageBox( hWnd, message.c_str(), L"åœ‹ç‹å€‘", MB_OK );
         }
         break;
 
@@ -135,7 +135,7 @@ LRESULT CALLBACK Fq4EditorWindow::OnCommand( HWND hWnd, UINT message, WPARAM wPa
         {
             int count = GiveTeam( m_forestDatas );
             std::wstring&& message = LogTeamResult( count, m_forestDatas.size() );
-            MessageBox( hWnd, message.c_str(), L"´ËªL°ê ¹p´µ¹F", MB_OK );
+            MessageBox( hWnd, message.c_str(), L"æ£®æ—åœ‹ é›·æ–¯é”", MB_OK );
         }
         break;
 
@@ -143,7 +143,7 @@ LRESULT CALLBACK Fq4EditorWindow::OnCommand( HWND hWnd, UINT message, WPARAM wPa
         {
             int count = GiveTeam( m_elfDatas );
             std::wstring&& message = LogTeamResult( count, m_elfDatas.size() );
-            MessageBox( hWnd, message.c_str(), L"ºëÆF°ê ÂÄ¤º¦h", MB_OK );
+            MessageBox( hWnd, message.c_str(), L"ç²¾éˆåœ‹ è–©å…§å¤š", MB_OK );
         }
         break;
 
@@ -151,7 +151,7 @@ LRESULT CALLBACK Fq4EditorWindow::OnCommand( HWND hWnd, UINT message, WPARAM wPa
         {
             int count = GiveTeam( m_mineDatas );
             std::wstring&& message = LogTeamResult( count, m_mineDatas.size() );
-            MessageBox( hWnd, message.c_str(), L"Äq¤s°ê ®æªL´µ", MB_OK );
+            MessageBox( hWnd, message.c_str(), L"ç¤¦å±±åœ‹ æ ¼æ—æ–¯", MB_OK );
         }
         break;
 
@@ -159,7 +159,7 @@ LRESULT CALLBACK Fq4EditorWindow::OnCommand( HWND hWnd, UINT message, WPARAM wPa
         {
             int count = GiveTeam( m_seaDatas );
             std::wstring&& message = LogTeamResult( count, m_seaDatas.size() );
-            MessageBox( hWnd, message.c_str(), L"®üµs°ê ¼}¥§¹y", MB_OK );
+            MessageBox( hWnd, message.c_str(), L"æµ·ç›œåœ‹ æ…•å°¼é “", MB_OK );
         }
         break;
 
@@ -167,7 +167,7 @@ LRESULT CALLBACK Fq4EditorWindow::OnCommand( HWND hWnd, UINT message, WPARAM wPa
         {
            int count = GiveTeam( m_plainMagicianDatas );
            std::wstring&& message = LogTeamResult( count, m_plainMagicianDatas.size() );
-           MessageBox( hWnd, message.c_str(), L" ¥­­ì°ê ¥ğ§Q¨È(Å]ªk­x¹Î)", MB_OK );
+           MessageBox( hWnd, message.c_str(), L" å¹³åŸåœ‹ ä¼‘åˆ©äº(é­”æ³•è»åœ˜)", MB_OK );
         }
         break;
 
@@ -175,21 +175,21 @@ LRESULT CALLBACK Fq4EditorWindow::OnCommand( HWND hWnd, UINT message, WPARAM wPa
         {
             int count = GiveTeam( m_plainKnightDatas );
             std::wstring&& message = LogTeamResult( count, m_plainKnightDatas.size() );
-            MessageBox( hWnd, message.c_str(), L"¥­­ì°ê ¥ğ§Q¨È(ÃM¤h­x¹Î)", MB_OK );
+            MessageBox( hWnd, message.c_str(), L"å¹³åŸåœ‹ ä¼‘åˆ©äº(é¨å£«è»åœ˜)", MB_OK );
         }
         break;
 
     case IDM_ITEM:
         {
             GiveItem();
-            MessageBox( hWnd, L"©Ò¦³¹D¨ã +10", L"ITEM", MB_OK );
+            MessageBox( hWnd, L"æ‰€æœ‰é“å…· +10", L"ITEM", MB_OK );
         }
         break;
 
     case IDM_MONEY:
         {
             GiveMoney();
-            MessageBox( hWnd, L"Àò±o $10000", L"MONEY", MB_OK );
+            MessageBox( hWnd, L"ç²å¾— $10000", L"MONEY", MB_OK );
         }
         break;
 
@@ -213,7 +213,7 @@ int Fq4EditorWindow::GiveTeam( std::vector<ManData>& datas )
     for ( size_t i = 0; i < m_datas.size(); ++i )
     {
         ManData& data = m_datas[ i ];
-        // 0x39=¢Ğ¤h§L, 0x3A=¢Ğ¾Ô¤h, 0x3B=¢Ğ¤}§L, 0x54=¤h§L, 0x55=¾Ô¤h, 0x57=ª®À»¤â, 0x58=¤}½b¤â
+        // 0x39=ï¼¢å£«å…µ, 0x3A=ï¼¢æˆ°å£«, 0x3B=ï¼¢å¼“å…µ, 0x54=å£«å…µ, 0x55=æˆ°å£«, 0x57=ç‹™æ“Šæ‰‹, 0x58=å¼“ç®­æ‰‹
         if ( ( data.job == 0x39 || data.job == 0x3A || data.job == 0x3B ||
             data.job == 0x54 || data.job == 0x55 || data.job == 0x57 || data.job == 0x58 ) &&
             data.leadership == 0 && data.team == 0x10 )
@@ -383,7 +383,7 @@ std::wstring Fq4EditorWindow::LogTeamResult( int count, int total ) const
 {
     std::wstringstream stream;
     stream.setf( std::ios::dec );
-    stream << L"¥»¦¸§ó·s¨¤¦â¼Æ: " << count << L" / " << total;
+    stream << L"æœ¬æ¬¡æ›´æ–°è§’è‰²æ•¸: " << count << L" / " << total;
     return stream.str();
 }
 

@@ -1,4 +1,4 @@
-#include "Pch.h"
+﻿#include "Pch.h"
 
 #include <Kafka/Stream/IInputStream.h>
 #include <Kafka/Stream/IOutputStream.h>
@@ -33,7 +33,7 @@ ManData::ManData()
 ManData::~ManData()
 {}
 
-void ManData::WriteToStream( std::shared_ptr<Kafka::IOutputStream> stream )
+void ManData::WriteToStream( std::shared_ptr<Kafka::Stream::IOutputStream> stream )
 {
     if ( !stream->CanWrite() )
     {
@@ -67,7 +67,7 @@ void ManData::WriteToStream( std::shared_ptr<Kafka::IOutputStream> stream )
     stream->WriteUint16( roleId );
 }
 
-void ManData::ReadFromStream( std::shared_ptr<Kafka::IInputStream> stream )
+void ManData::ReadFromStream( std::shared_ptr<Kafka::Stream::IInputStream> stream )
 {
     if ( !stream->CanRead() )
     {

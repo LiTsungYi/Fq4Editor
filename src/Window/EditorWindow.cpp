@@ -1,4 +1,4 @@
-#include "Pch.h"
+﻿#include "Pch.h"
 
 #include <memory>
 #include <Commdlg.h>
@@ -245,7 +245,7 @@ void EditorWindow::OpenFile( HWND hWnd )
     {
         CloseFile();
 
-        m_fileStream.reset( new Kafka::InoutFileStream() );
+        m_fileStream.reset( new Kafka::Stream::InoutFileStream() );
         m_fileStream->OpenFile( ofn.lpstrFile, true );
 
         OnFileOpened();

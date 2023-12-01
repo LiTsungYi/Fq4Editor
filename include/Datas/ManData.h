@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <Kafka/Basic/Types.h>
 #include <Kafka/Stream/ISerializable.h>
@@ -19,27 +19,27 @@ namespace Fq4Editor
 // 0x000029a0h 00 00 b1 b2 b3 00 00 b4 00 00 c1 c2 c3 c3 d1 d2
 // 0x000028b0h d3 d4 d5 d5 XX XX XX XX XX XX XX XX XX XX XX XX
 //
-// a1: ¦W¦r
-// a2: ¦¨ªø
-// a3: »â¾É (00:¤£¥i ¨ä¥L¼Æ­È¬Ò¥i, ­È¶V¤jªí¥Ü±a§L¯à¤O¶V±j)
-// a4: Äİ©Ê ¦³¨ÇÂ¾·~¤w¸g¦³°ò¥»Äİ©Ê¦b,¬G­n¿ï¾Ü¸Ó¤Hª«©Ò¯Ê¤ÖªºÄİ©Ê
+// a1: åå­—
+// a2: æˆé•·
+// a3: é ˜å° (00:ä¸å¯ å…¶ä»–æ•¸å€¼çš†å¯, å€¼è¶Šå¤§è¡¨ç¤ºå¸¶å…µèƒ½åŠ›è¶Šå¼·)
+// a4: å±¬æ€§ æœ‰äº›è·æ¥­å·²ç¶“æœ‰åŸºæœ¬å±¬æ€§åœ¨,æ•…è¦é¸æ“‡è©²äººç‰©æ‰€ç¼ºå°‘çš„å±¬æ€§
 //     0x10 = f, 0x20 = e, 0x40 = a, 0x80 = w
-// a5: ¯h³Ò (­È¶V¤j §@¾Ô¯à¤O¶V§C)
-// a6: ¸gÅç
-// a7: Â¾·~ (·|Ãö«Y¨ìGE©M¸ÓÂ¾·~°ò¥»Äİ©Ê)
-// a8: °}Àç (0=¥¼¥[¤J, 10=¥D¨¤)
-// b1: AA¹ï½b¦^Á×¤O ³Ì¤j¬° 0-99
-// b2: AD¹ï½b¨¾¿m¤O ³Ì¤j¬° 0-30 (¬°­t­È)
-// b3: MD¹ïÅ]ªk¨¾¿m¤O ³Ì¤j¬° 0-30 (¬°­t­È)
-// b4: ¹D¨ã 0-48 (00:µL)
-// c1: µ¥¯Å
-// c2: HR¥Í©R¦^´_³t«×
-// c3: HP¥Í©R¤O
-// d1: AT§ğÀ»¤O( ÃM°¨§L½Ğ¥ı±N¹CÀ¸¤¤¼Æ­È - 15¦A¨Ó´M§ä )
-// d2: AR©R¤¤²v
-// d3: DF¨¾¿m¤O( ÃM°¨§L½Ğ¥ı±N¹CÀ¸¤¤¼Æ­È - 20¦A¨Ó´M§ä )
-// d4: DR°jÁ×²v
-// d5: ¨¤¦âID
+// a5: ç–²å‹ (å€¼è¶Šå¤§ ä½œæˆ°èƒ½åŠ›è¶Šä½)
+// a6: ç¶“é©—
+// a7: è·æ¥­ (æœƒé—œä¿‚åˆ°GEå’Œè©²è·æ¥­åŸºæœ¬å±¬æ€§)
+// a8: é™£ç‡Ÿ (0=æœªåŠ å…¥, 10=ä¸»è§’)
+// b1: AAå°ç®­å›é¿åŠ› æœ€å¤§ç‚º 0-99
+// b2: ADå°ç®­é˜²ç¦¦åŠ› æœ€å¤§ç‚º 0-30 (ç‚ºè² å€¼)
+// b3: MDå°é­”æ³•é˜²ç¦¦åŠ› æœ€å¤§ç‚º 0-30 (ç‚ºè² å€¼)
+// b4: é“å…· 0-48 (00:ç„¡)
+// c1: ç­‰ç´š
+// c2: HRç”Ÿå‘½å›å¾©é€Ÿåº¦
+// c3: HPç”Ÿå‘½åŠ›
+// d1: ATæ”»æ“ŠåŠ›( é¨é¦¬å…µè«‹å…ˆå°‡éŠæˆ²ä¸­æ•¸å€¼ - 15å†ä¾†å°‹æ‰¾ )
+// d2: ARå‘½ä¸­ç‡
+// d3: DFé˜²ç¦¦åŠ›( é¨é¦¬å…µè«‹å…ˆå°‡éŠæˆ²ä¸­æ•¸å€¼ - 20å†ä¾†å°‹æ‰¾ )
+// d4: DRè¿´é¿ç‡
+// d5: è§’è‰²ID
 
 
 enum Element
@@ -52,15 +52,15 @@ enum Element
 };
 
 
-class ManData : Kafka::ISerializable
+class ManData : Kafka::Stream::ISerializable
 {
 public:
     ManData();
     ~ManData();
 
 public:
-    virtual void WriteToStream( std::shared_ptr<Kafka::IOutputStream> stream ) override;
-    virtual void ReadFromStream( std::shared_ptr<Kafka::IInputStream> stream ) override;
+    virtual void WriteToStream( std::shared_ptr<Kafka::Stream::IOutputStream> stream ) override;
+    virtual void ReadFromStream( std::shared_ptr<Kafka::Stream::IInputStream> stream ) override;
 
 public:
     Uint16 name;

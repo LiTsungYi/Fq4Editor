@@ -1,11 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #include <windows.h>
 #include <string>
 #include <memory>
 #include <Kafka/Applications/IConsole.h>
 
-namespace Kafka
+namespace Kafka::Stream
 {
 
 class InoutFileStream;
@@ -61,7 +61,7 @@ private:
     HACCEL m_hAccelTable;
 
 protected:
-    std::shared_ptr<Kafka::InoutFileStream> m_fileStream;
+    std::shared_ptr<Kafka::Stream::InoutFileStream> m_fileStream;
 
 };
 
